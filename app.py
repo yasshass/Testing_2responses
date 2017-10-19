@@ -49,66 +49,7 @@ def webhook():
     return r
 
 
-def processRequest(req):
-    if req.get("result").get("action") != "Traiter":
-        return {}
-    
-#     result = req.get("result")
-#     text = result.get("resolvedQuery")
-#     context = result.get("context")
-#     fonction=context.get("Fonction")
-#     city = parameters.get("geo-city")
-    
-#     baseurl = "http://52.15.100.135:5000/"
-#     if fonction=="tags":
-#         url=baseurl+"tags/"
-#     if fonction=="articles similaires":
-#         url=baseurl+"similar article/"
-#     reponse = put(url, 
-#                data={"text": text})
-    data={
-#         "speech": speech,
-#         "displayText": speech,
-         "speech": "hi",
-         "displayText": "hi",
-        # "data": data,
-        # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
-    }
-    #data = json.loads(result)
-    res = makeWebhookResult(data)
-    return res
 
-
-# def makeYqlQuery(req):
-#     result = req.get("result")
-#     parameters = result.get("parameters")
-#     city = parameters.get("geo-city")
-#     if city is None:
-#         return None
-
-#     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
-
-
-def makeWebhookResult(data):
-
-
-    # print(json.dumps(item, indent=4))
-
-    #speech = str(data)
-
-#     print("Response:")
-#     print(speech)
-
-    return {
-#         "speech": speech,
-#         "displayText": speech,
-         "speech": "hi",
-         "displayText": "hi",
-        # "data": data,
-        # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
-    }
 
 
 if __name__ == '__main__':

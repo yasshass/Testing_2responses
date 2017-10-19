@@ -18,7 +18,7 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
-from requests import put
+#from requests import put
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -32,7 +32,15 @@ def webhook():
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    res = processRequest(req)
+    res = {
+        # "speech": speech,
+        # "displayText": speech,
+         "speech": "hi",
+         "displayText": "hi",
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+    }
 
     res = json.dumps(res, indent=4)
     # print(res)
@@ -45,20 +53,28 @@ def processRequest(req):
     if req.get("result").get("action") != "Traiter":
         return {}
     
-    result = req.get("result")
-    text = result.get("resolvedQuery")
-    context = result.get("context")
-    fonction=context.get("Fonction")
-    city = parameters.get("geo-city")
+#     result = req.get("result")
+#     text = result.get("resolvedQuery")
+#     context = result.get("context")
+#     fonction=context.get("Fonction")
+#     city = parameters.get("geo-city")
     
-    baseurl = "http://52.15.100.135:5000/"
-    if fonction=="tags":
-        url=baseurl+"tags/"
-    if fonction=="articles similaires":
-        url=baseurl+"similar article/"
-    reponse = put(url, 
-               data={"text": text})
-    data=reponse.json()
+#     baseurl = "http://52.15.100.135:5000/"
+#     if fonction=="tags":
+#         url=baseurl+"tags/"
+#     if fonction=="articles similaires":
+#         url=baseurl+"similar article/"
+#     reponse = put(url, 
+#                data={"text": text})
+    data={
+#         "speech": speech,
+#         "displayText": speech,
+         "speech": "hi",
+         "displayText": "hi",
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+    }
     #data = json.loads(result)
     res = makeWebhookResult(data)
     return res
@@ -79,14 +95,16 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    speech = str(data)
+    #speech = str(data)
 
-    print("Response:")
-    print(speech)
+#     print("Response:")
+#     print(speech)
 
     return {
-        "speech": speech,
-        "displayText": speech,
+#         "speech": speech,
+#         "displayText": speech,
+         "speech": "hi",
+         "displayText": "hi",
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"

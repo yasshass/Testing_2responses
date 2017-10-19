@@ -1,1 +1,1 @@
-web: python app.py
+web: python assistance_journaliste.py

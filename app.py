@@ -47,8 +47,8 @@ def processRequest(req):
     
     result = req.get("result")
     text = result.get("resolvedQuery")
-    context = result.get("context")
-    parameters=context.get("parameters")
+    contexts = result.get("contexts")
+    parameters=contexts[0].get("parameters")
     fonction=parameters.get("Fonction")
     
 #     baseurl = "http://52.15.100.135:5000/"

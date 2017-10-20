@@ -48,14 +48,14 @@ def processRequest(req):
     result = req.get("result")
     text = result.get("resolvedQuery")
     context = result.get("context")
-    fonction=context.get("Fonction")
-    city = parameters.get("geo-city")
+    parameters=context.get("parameters")
+    fonction=parameters.get("Fonction")
     
     baseurl = "http://52.15.100.135:5000/"
     if fonction=="tags":
         url=baseurl+"tags/"
     if fonction=="articles similaires":
-        url=baseurl+"similar article/"
+        url=baseurl+"similar_articles/"
     reponse = put(url, 
                data={"text": text})
     data=reponse.json()
